@@ -1,0 +1,52 @@
+efficient way of creating virtual machines
+
+1. login to aws ec2 instance
+   click on your instance from running ec2 instance console
+   click on connect
+   again we will find connect option, click on that
+   after that virtual machine will open, where we can perform our work
+
+connecting to ec2 isntance from terminal on our local system
+ on windows
+  1. we acn use putty or mobaxterm or nomachine
+  2. always use public ip address to conenct to ec2 isnatnce from netwprk outdie the aws network
+  3. from the terminal execute the command ssh username@eceIpAddress
+  4. above command will fail as we are not providing key-value pair file to athenticate
+  5. so, we should use ssh -i "key-value pair file location"  username@ece2InstanecIpAddress
+  6. it will again fail because, pem file which is key-avleu pair in our case is a secret file that is it has sensitive information, so we have to
+      keep the permissions closed
+      so we have to execut eteh command chmod 600 "key-value pair file location" -> to change the peem file permissions
+  7. now again execute the same ssh command ssh -i "key-value pair file location"  username@ece2InstanecIpAddress
+  8. if the instance is not required stop the instance and then terminate it
+
+AWS CLI
+1. is a cli, can be used to directly interact with aws api and aws account, to create any resource
+2. to use it,we need to download aws cli
+3. to check if aws cli is installed, check using aws --version
+4. to authentiacte ourselves with aws cli, to do this
+   a. go to security credentials under your aws profile
+   b. on that page will fon sometging called create access keys, create it
+   c. take a access key and secret access key created 
+5. go to aws cli, execute the command aws configure
+   then it will ask for access key and secret access key and give a region it is optional
+6. Now, our aws account is suuccessfully configured with aws cli
+
+now, we can execute commands like for example
+ a. aws s3 ls
+ b. aws s3 mb "bucketanme"
+
+there is a documnetation avaialble to create aws instance from aws cli
+ aws cli ec2 instance create -> ex search for dcument
+
+AWS CloudFormation Template - another way of talking with aws api
+1.go to awslabs/aws-cloudformation-templtes git hub repositoru than to cloudformstiontamplate under that we have wide range of examples got to 
+  services under aws
+  from there you can take script for any of the service that you want to create
+  ex: take the ece2 instance creation script
+2. from aws ui, click on cft -> from that screen click on create tack button
+3. provide details for on create stack screen, 
+4. cloud fromation falls under infrastructure as code, will look into thee concepts later
+
+Script Automation using AWS API
+1. we can use boto3 module of python for script automation
+2. 

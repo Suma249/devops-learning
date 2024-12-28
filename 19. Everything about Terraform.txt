@@ -1,0 +1,42 @@
+with terraform
+1. manage any infrastrucre
+2. track your infrastructure
+3. automate changes
+4. standardize configurations
+5. collaborations
+
+for help on terraform: refer to hashicorp terraform document
+
+terraform lifecycle
+1. write:define instructions in configuration files]
+2. plan: review the changes terraform will make to your infrastructure
+3. apply: teraform provisions the instracture and updates the state file
+4. destroy: 
+terraform supports something called dry run
+
+install trraform:
+ linux:
+  sudo apt-get update
+  sudo apt-get install -y groupg software-properties-common
+
+terrform --help, terraform --version
+
+terrform mainly runs on 4 commands
+1. terraform init ->initialize the cloud provider using the .tf file
+2. terraform plan ->dry run
+3. terraform apply
+4. terraform destroy
+
+
+practical on terraform, git repo -> iam-veeramalla/write_your_first_terraform_project
+1. install terraform on ubuntu
+    1. wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    2. echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    3. sudo apt update && sudo apt install terraform
+
+what is state file
+terraform uses state file to track everything that ithas created, this state file should have read only permissions
+
+need to understand the terraform again, did not understand :(
+
+

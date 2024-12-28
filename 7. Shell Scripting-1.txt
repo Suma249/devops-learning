@@ -1,0 +1,66 @@
+automation: reducing manual activity
+
+shell scripting is a way to automate the day to day activities on linux operating system
+
+touch "filename".sh -> cmd to cretate a file, in the example we are creating a .sh file
+
+ls => to list all the file in the current directory
+
+ls -ltr -> to list all the files along with their metadata like date when the file was created, permissions
+
+man "cmd"-> cmd to know all details about the command "cmd"
+
+vim or vi -> linux text editor to create the files and edit the file
+
+doublie click on text -> to copy the text
+ctrl+v -> to pate the copied text
+
+shescripting
+1. touch first-shellscripting.sh -> create a file
+2. vi first-shell-scripting.sh -> open a file
+difference between vim or vi and touch
+: touch cmd is used in automation. it is important command.vim or vi are usually used to write content in to the file
+ vim or vi creates and opens file, which in automation when there is a need to create more files it might crash the sustem because of its nature
+of creating and opening file, but touch just creaes a file
+3. to write a shell script, in the file use the #!/bin/ksh (shebag), but what is this shebag:
+  : purpose of writing #!/bin/ksh in the starting of shell scripting file is, in place we can write dash or sh or bash also
+   these are executeables that will execute our shells script. shebag is a way of informingl linux or kernel that ksh or bash or sh or dash, etc, is a execuatble that
+   we want to execite our script code. each of these executables have their own sysntax. widely ue done is bash.
+   /bin/sh: redirects us to /bin/bash using the concept of linking (Soft link and hard link).
+   but few years ago, /bin/sh is made to redirect to /bin/dash. 
+   always use /bin/bash
+  previously both /bin/sh and /bin/bash were same becaue /bin/sh was redirecting to /bin/bash, but now it is not same becasue some of the operating systems have decide to ue /bin/dash as default
+4. so will use #!/bin/bash in our shells cript file
+5. lets write a shell script to print our name
+6. use the command echo to print data in shell scriptd
+7. code: echo "my name is Suma"
+8. out code is done, and to save the file use esc and pres : and than press wq! to save the file in the vim editor
+9. use the cat command to know the content of a file
+10. executing a shell script: we can use the command sh "shell cript file name" or ./shell-script-file.sh . any executable file can be executing using ./ followed by shell script file name, but if there is no execute permision to the
+    shell script file, it wont execute when we execute it. so for this we will use the chmod command to grant permissions to a file.
+    chmod command is divided in to three categories, 
+     a. root user permission b. which group has access to the file c. what are the use permissions to the file -> thee are represented interms of numbers
+    chmod filname 777 -> to grant all permissions to all the 3 categories
+    what is 777?, linx basically used a formula called 4,2,1.
+    4: it is for read, 2: to write, 1: to execute
+   if we execte chmod 444 filanme -> tjsi means all three categories(root, group and user) has only read permission to the file filename
+11. history -> command to know all the commands that we used on our system
+
+simple shellscripting
+1. use vim cmd to create and open a file
+2. inside the shell script file
+  #!/bin/bash
+  
+  #create a folder
+   mkdir suma
+  #create two files
+   cd suma
+   touch firsfile secondfile
+3. save the file and exit feom the vim editor
+4. give the exute permissiom for the script file -> chmod 741 shell-script-file
+5. to execute the shell-script, use either sh "shell-script-filename or ./shell-cript-file-name
+
+role of shell scripting in devops
+1. as a devops, you would have to maintain infrastructure, to maintain code(git) and to do configuration management
+2. 
+

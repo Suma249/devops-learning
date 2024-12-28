@@ -1,0 +1,38 @@
+Continous Integration and Continous Delivery are 2 parts to CI/CD
+
+continoud integration: a process where we integrate a set f tools or process that we follow before deliviring the application
+continoud delivery: p
+
+lets say we have an application developed n out system and customer is located in some other region, how can this application be delivered to customer?
+solution is ci cd
+
+some of the stabdard steps that we follow for an application are
+1. unit testing - checking each functionality seperately
+2. static code analysis - checking if code is syntactically correct, correctly indented and correctly structured
+3. code quality/vulnerability - 
+4. automation - end to end testing 
+5. reports - 
+6. deployment - deploying application on to the platform where customer can access
+
+our code will be maintained on VCS nad from there ci cd will take place
+
+lets say there is an application, and there is v1 version of code pushed onto the VCS(github), from VCS all the steps that we dicussed above should take place'
+so what we will do is we will deploy the ci cd tool ex: jenkins and we will tell jenkins to watch for our repository and whenever there is a pull request
+or new commit made onto the repository, jenkins will run a set of actions
+
+jenkins will act as a orchestrator or pipe, it will orchestrate a lot of tools in it.
+for java application, for unit testing we can integrate building of our application using maven and running unit testing using junit
+jenkins also integrates something called sonar for code quality , alm for reports 
+all these are configured by devops in jenkins
+
+jenkins can also deploy the application to differebt environments
+
+organization will have many environments to test the application, each environment will be different
+and jenkins will take care of delivering code to different environment for further testing, once tested and approved in current environment
+
+
+currently we are moving towards micro services
+jenkins is binary and we will install it on one machine and will connect other isnatnces to it and will configure it, each instnce is owned by each team
+this setup is very complex like to scale up and all, and also compute is very cstly and maintainance aslo becomes huge
+
+

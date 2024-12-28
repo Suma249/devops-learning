@@ -1,0 +1,24 @@
+Virtual Machine?
+lets say an organization has bought 5 servers, and the sysadmin has deployed app1 on server1 and app1 requires 4 GB RAM and 4 processors but server1 is having a 100 GB RAM  and 100 core
+so it can seen that server is not being used efficiently
+so thats why concept of virtualization came into picture, so now with the hep of virtulization concept
+will indstall a hypervisor(it is a software that can install virtual machines on physical server) on server1, and we created a 5 servers on the server1 that is we are doing a logical partitioning
+of server1, and each logical partition is called virtual machines
+some of the popular hypervisors are VMWare, Xen, etc,.
+so now team1 ca use vm1, team2 can use vm2,etc.,
+
+convept of virtual machine is nothing but we are basically creating virtual environments that funcyion as virtual computer systems
+breaking the physcal server into parts logically not physically
+
+and each virtual computee has its own cpu, memory, hardware, etc.,
+
+hypervisor is a key that is creating virtual machines
+
+and the same concept is followed amazon, github and any other virtual machine or cloud platforms
+
+what these clid platforms does is lets say amazon what they do is they build data centers.
+lets say amazon has data center in x city and what this mreans is they take huge land and install a huge physical center there(like 100's or 1000's of physical servers)
+and whenver user reqiests an amazon for virtual machine(ec2 instance) and select the region as x, then in the data center that is there is region x on on eof the physicak server
+a hypervisor on a physical server will create a virtual machine for a user
+
+servers are installed using rax

@@ -1,0 +1,47 @@
+Git and Github
+
+1. version control system: 
+   a. it addresses sharing of code: in an organization, dev team will work on developing an application, where each functionalioty is implemented by each developer
+     but to have a complewte application, we need to have all the code at one place and this is where version control system comes into rescue
+   b. versioning: it can control when what code is changed and so that if we have to go bacj to previous version we can do that using version control system
+
+why git is very popular?
+git is distributed version control syste, unlike other centralised version control system like svn pr cvs.
+with svn: dev people used to communicate using centralied server, and now to share the code with other devs the only way is to share it to
+svn , and then other dev will pick the same code from svn, that is evrything used to happen from a central place here the central place is svn.
+if thre central sytem goes down, evrything will be gone. it is single point of failure
+
+with distributed version control system, if a dev1 wants to share the code with dev2, dev2 can copy the code 
+we can create multiple copies of te distributed system and these copies are called forks
+
+fork: creating an entire copy of a code, and this way code is ditrubuted
+
+git vs github?
+
+1. git: distributed version control system, it is open source(anyone can download git and can implement it)
+2. github: it utilises the git, but improvement over git
+
+practoical:
+
+1. create a folder
+2. change to the create folder
+3. to track of changes or versioning of changes will crreate a git repository locally in this folder using command git init
+  .git file is crrated that keeps track of all changes in this directory
+  evrything in git is tracked as object
+  hooks: to prevet unitenally committing api tokens for examples
+  config: 
+  head: 
+4. git status: to know the statis of thiles i the currewnt directory, if any file is not committed it will shpe intracked files and to 
+track a file , we shoulg use git add "filename:
+git diff: it will tell the changes that are made to the file that was tracked by git
+to keep track of versioning, we have to tell git about that this is v12,v3 .. so on and in git cae these are called commit
+5. git commit -m "message"
+6. git log: it wikk give details about commiys made
+7. to go back to the previous version, from the git log copy the commit id to which we want to go back
+  and use the command git reset --hard "commit id"
+8. to share the code,
+  we have to create a distributed system,  that is where github or bitbucket or self hosted comes into picture
+  a. we need to have a github account
+  b. create a repository with necssary persmissions
+  c. we can push local changes to the reposity on github or we can ditectly upload a file
+  d. now to copy the files they can for it from the repository

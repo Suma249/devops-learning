@@ -1,0 +1,20 @@
+What is Devops?
+
+Devops is basically a practice that we are adopting in our organization that increases the organizations ability to deliver the application -> in general definition
+ex:
+an orginzation example.com is taking 10 days to introduce verion v2 from v1, just for one smal changes -> 10 days is not a good one
+
+so, devops is the process of increasing the ability to deliver the applicatoions, its not only about delivering
+its also about automation, quality, monitoring and testing
+
+so, devops is a process of improving the application delivery by ensuring that there is a proper automation with the good quality that is maintained,and ensuring that there is continoius monitoring and testing
+
+Why Devops?
+before 10 years,
+developers after wriring code will add that code in central locatio, system admin will create the server and they will deploy teh application on the server
+and then tester would test the application, after this build and release engineer will take the application to the production envirpnment
+System Administrator, Build and Release engineer, Server Admin => these three roles were involved in taking the application from developer to customer
+server adminitrator will create the application server from where customer will access the application
+so, because of this manual effort -> world of devops is evolved
+
+How to introduce ourselves as Devops

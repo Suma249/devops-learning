@@ -1,0 +1,19 @@
+branching strategy
+branch: its a seperation from the original code, where we will amke our changes without making changes to the brancg where oroginal code is stored
+to make sure that new changes wont affect the existing changes will create a seperate branch and there will add our changes
+
+branching strategy
+
+lets say we have a calculator code om git hub repository, now to add the new feature code, will create a branch from the orginal repository
+and afterr our feature code is completed will push the cahnges to the original branch from where we cretaed a branch
+
+release branches: to deliver the application to the customer, we usually instead of building the application from master we build it from releae branches
+
+we create release branch, buikd it from the release branch and will deliver that to the customer
+we wont do it from master branch, because that is kept for active developmemt where changes to the code will keep on happening
+
+ex: kubernetes repo on github
+
+hot fix branches: quick fixes, and these fixes should go back to both release and master branch
+
+any branch change should go to masterm r=whether it is feature brach or release branch, eventually

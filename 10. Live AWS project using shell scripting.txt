@@ -1,0 +1,80 @@
+why people move to cloud?
+ 1. managability
+ 2. cost
+
+we ahve to write a shell script for resource usage and we have to genetate a report everyday
+1. connect to your linux ec2 instance
+2. cgeck if aws is installed using aw command
+3. configure aws to communicate with aws using "aws configure" command
+4. create a .sh file awsresourcetracker.sh using vim editor
+5. press esc and i to get insto insert mode
+6. script, add tje firsy shebang line
+ #!/bin/bash
+7. add the file details
+ ################
+ # author: 
+ #date: 
+ #decription of script: this script will report aws resource usage
+ # recources beihn tracked are aws s3, aws ecw2, aws lambda, aws iam users
+ ################
+8. if we dont know aws cli commands, there is documentation available for the same provided by aws
+9. #list s3 buckets
+   aws s3 ls
+10. #list ec2 instances
+    aws ec2 descrbe-instances
+11. #list lambda
+    aws lambda list-functions
+12. #list iam users
+    aws iam list-users
+awsresourcetracker.sh
+ #!/bin/ban
+ ################
+ # author: 
+ #date: 
+ #decription of script: this script will report aws resource usage
+ # recources beihn tracked are aws s3, aws ecw2, aws lambda, aws iam users
+ ################
+set -x #for debug mode
+ #list s3 buckets
+   echo "print list of s3 buckets"
+   aws s3 ls
+ #list ec2 instances
+    echo "print list of ec2 instances"
+    aws ec2 descrbe-instances
+#list lambda
+    echo "print list of aws lambda-functions"
+    aws lambda list-functions
+#list iam users
+   echo "print list of i am users"
+    aws iam list-users
+
+
+
+what is JQ(aws commannd for json parsers)?
+aws ec2 describe-instances | jq 'level of the property we want' -> refer to screensho taken
+
+redirecting the outputr of our scri[t to a file
+
+#!/bin/ban
+ ################
+ # author: 
+ #date: 
+ #decription of script: this script will report aws resource usage
+ # recources beihn tracked are aws s3, aws ecw2, aws lambda, aws iam users
+ ################
+set -x #for debug mode
+ #list s3 buckets
+   echo "print list of s3 buckets"
+   aws s3 ls > resourceTracker
+ #list ec2 instances
+    echo "print list of ec2 instances"
+    aws ec2 descrbe-instances > jq '.reservations[].instances[].instanceId'
+    aws ec2 descrbe-instances > reourceTracker #to redirect output to a file
+#list lambda
+    echo "print list of aws lambda-functions"
+    aws lambda list-functions > respurceTracker
+#list iam users
+   echo "print list of i am users"
+    aws iam list-users > resourceTracker
+
+assignment: how to integrate the above resource ravker file with cron job

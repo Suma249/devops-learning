@@ -1,0 +1,48 @@
+what is an operating system?
+hardware -> cpu, ram, i/o
+software -> gaming, jenkins, etc., runs with the help of hardware, 
+
+operating system acts as a bridge between hardware and software
+if we purchase dell laptop, it is sells the harware by installinga aoperating sytem on top of hardware
+
+as a user we are isntalling a sifwtare that talks to operating system and which agai talks to hardware
+
+linux is famous among operating systems. but why?
+linux is opensource(anyone can contribute to the code to improve), very secure(we dont have to install any antiviruses), linux has many distributions,linux is vet fast in performance
+
+architecture of linux
+1. kernel: eart of os, it is responsible for establishing communication between hardware and software.
+kernel has 4 primary responsibilities
+ 1. device managemet
+ 2. memory management
+ 3. process management
+ 4. handling sytem rekated calls
+
+2. Systel libraries: responsible for performing tasks
+
+3. compilers:
+
+4. user processes
+
+5. system software
+
+Fundamentasl of shell scripting
+1. shell is a way to talk to operating system
+2. commandline way through which we talk to os is shell commands
+bash on macos
+commands commonly used
+ 1. ls -> to list files in the current workig directory
+ 2. pwd -> to know present working directory
+ 3. cd -> to change to different working directory
+ 4. ls -ltr -> to know complete derails about all the files and directprie sin the current working directory
+ 5. touch -> to create a file
+ 6. vi -> used to create a file and then write into a the file, to write we need to use esc+i, to save file and exit from vi es+:
+ 7. cat -> to know the content in the file
+ 8. mkdir
+ 9. rm
+ 10.rm -r -> to remove directory
+ 11. to know system resource details
+   for memory command used : free -g
+   nproc: to know number of cpu's
+   df -h : disk size and other details
+   top: to know all system resources details using one command

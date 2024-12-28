@@ -1,0 +1,9 @@
+1. create an ec2 instance of ubuntu os
+2. jenkins is a java based application so for that to be isntalled we need to have java installed
+3. updtae the existing packages -> sudo apt update
+4. install jav of 17 -> sudo apt install openjdk-17-jre
+5. verify jva installation -> java --version
+6. install jenkins -> sudo apt-get install jenkins, jenkins document : https://www.jenkins.io/doc/book/installing/linux/
+7. configure security group of ec2 instance toa ccept traffic from jenkins whuich is by default not accepting traffic
+8. jenkins architecture
+   in an organizatuon

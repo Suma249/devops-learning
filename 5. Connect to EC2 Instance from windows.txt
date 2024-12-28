@@ -1,0 +1,7 @@
+1. download mobaxterm of installer edition
+2. unzio the downloaded mobaxterm and then intalle the exe file
+3. open thew mobaxterm
+4. get the ip address of your ec2 instance
+5. go to the session menu from mobaxterm and select the ssh
+6. and provide the host name i.e iip address and then the user name and then click on the advanced sjell setting there select the use private key then select the downloaded keyu-value
+from your local system

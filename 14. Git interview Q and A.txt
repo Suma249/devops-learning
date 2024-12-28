@@ -1,0 +1,57 @@
+what is master trunk or main branch
+
+puhinng code to git repository
+ through cli: we use git init to initialise a local git repository. git will use .git to track the code locally
+ for sensitive information: hooks in .git
+ git init will create .git file is created in rhe current dieectory to track the code locally
+ to keep trac of everything we use git
+ to make git track all files, we use git add
+ after adding the files, we use git commit , we do commit because to travk changes like for ex whenver we execure git log , it will show all the changes
+ and to rever the code to previous successfully committed on, than there commit mechanism comes into resvue
+
+git add: to track the files
+git commit: to commit the changes
+
+git push: we have code in our local system and to put this code on distributed place we use git push, to push entire committed code to the repository
+
+git workflow that we use in while working: gir add, git commit, git push
+
+git push wont work directly and for that to work we need to add remote repository to where we need to push the code.so we need to add the git hub repoautory location
+using git remote add "github repo url"
+
+git clone, to copy the code from remote repository tp the local system
+
+git remote -v: it give our remote reference
+
+git remote add "our repoitory url"
+
+git clone
+1. to clone or pull a code from git repository or guthub or git bucket
+using ssh:
+ will authenticate using public key, where as with http will authenticate using password
+ for public key, we can generate using the command ssh-keygen -t rsa -> it will generate the public and private key
+ copy the public key and past it in the github(under git hub profile -> settings -> ssh and gpg keys ->new ssh key -> under key -> paste the copied public key
+
+git clone vs git fork
+fork: fork is used to create a copy of the git repository
+clone: used to download git repository on to the local sytem.
+
+branches: creating
+1. git branch
+2. git checkout -b "branch_name": create a branch from the main one from the point where new code needs to be added
+3. git checkout main: to go back to the main branch
+
+with branch concept we can seperate the development activity
+
+to merge the branches:
+1. git merge "branch to merget with main": 
+2. git rebase "branch to merge with main": 
+3. git cherry-pick "commit id": picking the commits, it is useful when theer are 1 or 2 commits
+
+git log "branch": to know the changes in the branch "branch"
+
+defference between merge and rebase: 
+
+what is merge conflict
+
+

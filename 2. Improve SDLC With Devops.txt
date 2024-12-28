@@ -1,0 +1,15 @@
+Software Development Cycle: phese include design, develop and testing
+
+in any organization before a product is delivered to the end users, there are few phases that product has to go through
+phases are:
+planning, defining, designing, building, testing, deploy
+
+Planning: prowduct oewner or BA will deal with planning or requirements phase, where they will get inputs from customers
+Defining: clearly defining requirements in the documents(writing a document called software requirement specification document)
+Designing: high level designing(defining like how many replicas to create, type of database, etc.,) and low level designing for the requirements that were given()
+in below three phases where devops playes main role 
+Building: developing the product according to the requirements. after writing the code, it will be pished to the common location where the complete application code is stpred
+Testing: testing the application
+Deployment: deploying the application onto the production server
+
+so, devops will fastens the above three phases by ensuring that evrything happens in an automated way

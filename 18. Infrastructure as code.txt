@@ -1,0 +1,29 @@
+open stack is used to create our own cloud on our servers
+
+scenario1: when script is written applying to only aws cloud provider but due to some reasins if we have to shift from aws to azure 
+al these scripts will be in vain
+
+scenatrio 2: hybrid cloud model, where we can create part of our infrastructure on aws and part of our infrastructure on azure like for storage 
+aws is used and for 
+project related services azure is used, for these debops person has tolearn aws cft and azure resource manager which are called infrastructure as code
+
+so this is where, terraform comes into help, where instead of learning all the other tools as explained in the above 2 scenarios
+
+where we can learn scripts and terraform will automatically take care of automating the resiurce screation on cloud providers
+terraform is a tool provided by hashicorp, terraform solves the problem of learning scripts specific to cloud provider and we can just write terraform scripts
+irrespective of what the cloudprovider is, terraform will take care of automating resources on cloud, we just have to tell who our cloud provider
+we can learn one toold and this tool will take care of infrastructure -> api as code
+
+API as code: concept usimg which we can automate any provider using their api
+terraform internally talk to the api of that particular cloud provider, terraform wull convert the script into the provider specific based on cloud provider mentioned
+in the terraform scripts
+
+API: using api, we can programatically talk to the application
+terraform uses api of the cloud privider
+terraform will automatically look at the cloud providers api, instead of developers talking to each cloud probifer api using 
+tahtr spiecific langiage which is very troublesome
+terraform will convert our request into api call, and as a user we are not talking to api of cloud provider
+terraform will receive a user request and converts it into a API call
+
+infrastructure as a code: automating infrastructure using tools like cft, azure resource mnager, etc.
+api as code: terraform that is more efficient than the above one's

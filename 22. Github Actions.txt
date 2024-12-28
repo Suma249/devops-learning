@@ -1,0 +1,44 @@
+github actions is yet another ci cd solution similar to jenkins but the primary difference is github actions is focused only on github just like gilab ci cd 
+that is focused on gitlab, these are platform oriented solutions
+
+for github actions we dont have to install any plugins, but to create a github actions goto the parent directory of ur repository
+and create .github/workflow folder and once we do tht whatever action is inside this folder will be executed automstically on defined events for that action
+we can have as many action files as we want and each action file is efined as the pipeline
+action file is an yaml file
+
+1. create a python function that takes a two integers as input and returns their sum and in the same file add the python function to unit test addition func
+   nality
+   def add(a,b):
+     return a+b;
+   def test_add():
+    assert add(2,4) == 6;
+    assert add(9,7) == 16
+2. write a github action or pipeline that runs whenever there is a new commit thst is getting created, this action should checkout the code and
+   it has to create a python environmrent for us
+   name: my first github action
+   on:[push]
+   jobs: #can be correlated as pipeline in jenkins, in one file wecan have multiple piplines by hdefining multiple jobs
+     build:
+       runs-on:ubuntu-latest
+       strategy:
+         matrix:
+           pthon-version:[3.8,3.9]
+       steps:
+       - uses: actions/checkout@v3
+       - name:Set up Python
+         uses:action/setup-python@v2
+         with:
+           python-version: ${{matrix.python.version}}
+         
+       - name: install dependencies
+         run: |
+           python -m pip install --upgrade pip
+           pip install pytest
+       - name: Run tests
+         run: |
+           cd src
+           python -m pytest addition.py
+
+difference between github actions and jenkins
+
+code examples: iam-veeramalla/github-actions-zero-to-hero

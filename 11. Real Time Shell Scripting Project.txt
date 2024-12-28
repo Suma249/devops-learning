@@ -1,0 +1,41 @@
+shell scripting with github integration
+
+we can talk to github using two ways
+ 1. API: application interface, talking to application via interface
+ 2. CLI
+
+for github, api way of communicayion is simple
+we can talk to application, only if the application exposes its application interface where we will run dome mopdules like using curl for shell scripting
+using eithr http or https protocol
+
+always use api documentation of that particular application on how to use api's
+
+as a devips engineer, we will maintain lot of github repoitories i.e supporting different team 
+will make sure proper access is granted , 
+so, now we will write script to list of people who has access to the repository
+
+ppk file for putty -> to access ec2 via putty we need to use ppk file instead of pem
+
+
+script
+
+#!/bin/bash
+
+api_url="";
+
+username=$username'
+token=$token
+
+repoOwner=$repoOwner
+repoName=$repoName
+
+function github_api_get(){
+  local endpoint="$1"
+  local url="${api_url}/{$endpoint}"
+  curl -s -u "${username}:${tpekn}" "$url"
+}
+
+function list_users_with_read_access(){
+  local endpoint="repos/${repoOwner}/${repoName}/collaborators";
+  collaborators=$(github_api_get $ "endpoint" | jq -r '.[] | select
+}

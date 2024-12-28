@@ -1,0 +1,35 @@
+AWS cloud provider
+if we need virtual machine, from aws console will make request to the virtual machine, in repose aws would send created virtual machine's configuration details
+and same happens with Azure cloud provider
+
+above method is a manual method creating a virtual machine on cloud provider
+
+but to improve the efficiency, we will use automation that is provided aws called aws ec2 api
+so using automation, user who wants to create a virtual machine he will write a script, and usig this script he will make a call to aws ec2 api
+he makes a call aws api and in the script he wil menrion the details for his ec2 instance
+
+amazon dev people will expose the api of ec2 intance, and this api will recieve a rrqiest and if the request is in correct format it will send the ec2 instance configuration
+
+script that devops writes can be
+  1. through aws cli
+  2. directly use the aws api
+  3. aws cft
+  4. terraform -> alternative to resource creation
+  5. aws cdk
+
+infrastructure or resource creation
+
+creating an ec2 instance from aws
+ 1. go to services from aws console
+ 2. click pn ec2 under services
+ 3. in ec2 global view, click on launch instance
+ 4. after clicking on the launch instance, we have to provide few details 
+     like ec2 name, operating system type, chhose instance type as free tier
+    create a key value pair for login to ec2 instance, after providing key value details click on create key value pair
+    key-value pair: allows us to login to ec2 instance, once aws ec2 instnce is created we will get a ip address but to login we need login credentials to access it so
+   we use key-value pair
+    than click on launch instance 
+ 5. and after few minutes, ec2 instances will be created
+
+on azure
+1. create instance -> virtual machine

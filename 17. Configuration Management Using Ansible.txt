@@ -1,0 +1,52 @@
+configurration management: is a way how devops engineer manges the configuration of a infrastructure or server
+
+lets say there is a system administrator(before devops engineer) and our organization is using on premise server(datacenter if our own) and there are 100
+servers, 50 of them on linuk , 25 on centos and remaining 25 on ubuntu. System adminsitrator created these servers and they are managing it like
+1. upgrading the systems
+2. installation
+so do these tasks on each server is a difficult task and involves lot of time for this, so as a solution previously these peopel used to write scripts
+based on os type,this is again a another challenge
+and after this everything started moving to cloud, server creation became efficient and configuration inside these servers also became less
+with this again -> based on os type writing shell script and for the same os based on distribution writing shell script is a problem
+so to address this issue, there was a concept discovered called configuration managemet. 
+configuration managment will aim to solve the problem of configuring multiple servers.
+
+inside configuration management there are some popular tools like puppet, chef, ansible and salt
+
+lets say there is a devops engineer, and this devops engineer manages the aws configuration of an organization
+in aws he has created 10 ec2 instances and his responsibility is to manage the configuration of these 10 ec2 instances
+like where there is security upgrades, or default installations to be made or packages to be monitored -> for these kind of things
+devips enhineer makes use of ansible tool and updates the configuration of these 10 ec2 instances
+pull model:he can write ansible scripts at one place loke on laptop and then he can push the configuration to 10 ec2 instances
+by executing ansible playbook and the configuration is executed in push mechanism from his laptop to all the 10 ec2 instances
+and also ansible uses agentless model, where as puppet follows master salve architecture
+lets say devops engineer has a master slave or puppet and all these 10 ec2 instances should be configured as slaves
+and changes can be made
+since ansible is a agentless toold, we can just put the names of the servers in a file called inventory file
+since our resources can be scaled up or scaled down any time, which is a dynamic environment with ansible since it is agentles ytool we can just add or remove ip's
+in the inventor file
+and also now ansible has dynamic inventory because of which ansible can auto detect the ec2 instances that needs to be managed
+ansible is very to use with both windows and linux OS where 
+for puppet configurstion files should be written in puppet language, where as for ansible configuration files are written in yaml language
+
+puppet is a pull mechanism model, it follows master slave architecture, with this all the instances that needs to be upadted should be configured as slaves, it involves configuration on slave models
+and ansble is a push mechanism model -> can write script at one place and can update as many model as the devops person wants to
+ and aslo ansible uses agentless model, with this model, all the instances details that needs to be updated will be added in the file
+in ansible there is a concept called dynamic inventory with which it can dynamically identify t
+ansible is easy with both windows and linux 
+
+for puppet, we have to write configuration in puppet language where as ansible uses yaml
+
+ansible is not good with windows
+it is difficult to debug ansible when it runs into problem
+ansible has performance issues
+
+interview question
+1. language used for ansible python
+2. ansible suports both linux using ssh and windows using winrm
+3. diff between puppet and ansible
+4. is ansible push mechanishm or pull mechanism
+5. wat language ansible used
+6. does ansible supports all the cloud providers
+7. 
+

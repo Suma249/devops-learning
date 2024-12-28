@@ -1,0 +1,77 @@
+official ansible doc
+1. connect to ec2 instance, update packages using apt package manager on ubuntu os
+2. install ansible - sudo apt install ansible, very ansible installation -> ansible --version
+3. create another server as a target server for the current server, so that we can try configuring the target server using currrent server
+4. all that ansible requires is a passswordless authentication, if ansiblre can authenticate without any password with other servers it can confugure anything on
+the target servers
+5. ansible should be able to communicste with target server without any password, so for that
+6. take the target server ip address and do ssh "target server ipaddress", and it will ask for password as we have not configured passwordless authentication yet
+7. ssh-copy-id "ip address" -> is one of the ways to configure passwordless authentication
+8. other way is, execute the command ssh-keygen which will generate a private and public key. id_rsa -> private key, id_rsa.pub -> public key
+   private key is used to login to the machine on which it is there and it should not be shared with anyone
+   for communication purpose we should use public key
+9. copy the public key file content 
+7. login to target server whoose configuration needs to be manager using ansible, execute ssh-keygen on target server as well
+8. open the authorized keys file, and paste the public key file content taht we copied on ansible server
+   i -> for insert mode with vim editor and :wq! for saving the content
+9. try connecting to target server from ansible server now using ssh "target server ip address"
+10. ansible playbook: nothing but a ansible files similar to shell script files
+11. we dont have to wriye anible playbooks all the time we can run ansible commands from cli, in ansible terminology these commands are called 
+    ansible ad-hoc commands
+12. to run these commands, we have to execute ansible "inventory file location", inventory file is the one thstcontains target server ip address
+    this inventory file can be placed anywhere on the ansible server
+13. execute ansible -i inventory all -m "shell" -a "touch devopsclass"
+14. now if we check in target server home dir, will see that devopsclass file is created
+15. if we want to perform multiple ansible commands we will go for ansible playbook like we do with shell scripting so that it can be used again for the same 
+    task in the future
+16. what are ansiblew modules, in out command we used shell module as ansible supports shell commands on target server
+17. -m -> stands for module -a => command to execute on target server, all -> all servers in the inventory filr
+18. if inventory file contains multiple servers?, currently we have only on sever 
+    in multiple server cases, in inventory files we can do grouping of servers like
+    [dbservers]
+    ip address
+    [webservers]
+    ip address
+19. now to execute commands on web servers, ansible -i inventory webservers -m "shell" -a "touch devopsclass"
+writing ansible playbook
+scenarion: we want to install nginx and start it
+for this task, we need to crreate a ansible playbook
+1. ansible playbooks are in yaml format
+2. vim "ansible playbook file name.yaml"
+3. yaml files starts with "---", these 3 hiphens indicate the file content is in yaml format
+4. explain about the yaml file,
+5. mention the hosts
+6. now there are 2 cases, if this playbook should be executed as root user or non root user
+7. singe _ at the beginning indicates a playbook yaml, we can have more than as well
+8. when we have list of tasks we should start with - under tasks
+ below is the content
+  ---
+- name: Install and start nginx
+  hosts: all
+  become: root
+
+  tasks:
+   - name: Install nginx
+     apt:
+       name: nginx
+       state: present
+   - name: Start nginx
+     service:
+       name: nginx
+       state: present
+9. ansible is used to execute ad-hoc commands
+10. ansible-plybook used to execute ansible plsaybook files
+11. execute the command: ansible-playbook -i inventory first-playbook.yml
+12. to know what is happining inside ansibe ie. how ansuble is executing internally on target server we can use below caommnd
+   ansible-playbook -i vvv inventory first-playbook.yml -> add verbose option
+13. real world task
+  create 3 ec2 instance(done using terraform) and configure one of them as master and other 2 as workers(done using terraform)
+ this task , first task i.e creating 3 ec2 instances can be done using ansible also but terraform is best for this task
+these two actions cant be created using one simple playbook, as it will contain more number of tasks
+ to avoid this, ansible a concept of roles
+ ansible roles: efficient way of writing ansible playbook, to prperly structure plabook, ansible roles are introducer
+14. ansible-galaxy role init kubernetes -> execute this coomand and then makdir second-dplaybook and vhange it to this directory
+ then execute ansible-galaxy role init kubernetes and now if we check the files in second-plsybook directory we will see a few files 
+related to kubernestes. so ansible creates a bunch of files and folders thsat can be used to structure the ansible playbook
+15. so for complex ansible playbooks, we will use the conceptr of ansible-galaxy
+iam-veeramalla/ansible-examples

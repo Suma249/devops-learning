@@ -1,0 +1,42 @@
+1. commonly used shell commands
+ : ls, cp, mv, mkdir, vim, touch, grep, find, top, df, free
+2. shell script to list all the processe
+  : ps -ef  -> to list all the processes running
+    ps -ef | awk -F" " '{print $2}'
+3. write a script to print errors from remote file
+ : curl "remote log file url" | grep error
+4. shell script to prit numbers divided by 3 and 5 and not 15
+   #!/bin/bash
+   for i in {1, 100}; do 
+    if ([`expr $i%`==0] || [`expr $i % 5` ==0]) && [`expr $i %15` !=0];
+    then 
+       echo $i
+    fi;
+    done
+5. script to print number of 's' in mississippi
+  #!/bin/bash
+  x="mississippi"
+  grep -o "s" <<<"$x" | wc -l
+6. how will you debug shell script
+  : add set -x at the biginning of the shell script
+7. what is crontab and an example for it.
+  : crontab
+8. how to open a read only file
+  : vim -r filename
+9. difference between hard and soft link
+  : when we create and save a fie, this gets saved in the memory or on the disk
+    but lets say we want to take copy of the file and re use it than we can go for hard link
+    using hard link we can copy, so even when the actual file gets deleted the copy will exist in the memory
+    soft link: copy and the actual will reference each other, del;eting one will delete the original one as well
+10. difference between break and continue statements
+    continue comes with the condition of skip
+11. disadvantage of shell scripting
+12. digfferent types of loops and when to use which?
+13. is bash dynamic or statucally typed and why
+   : it is dynamically typed, as the type of the varuable is interpreted from the data in the variable
+14. tool for network debugging
+  : traceroute google.com
+  : tracepath google.com
+15. how to sort a list of names in a file
+16. how to manage logs of a system that generate hugew log files every day
+   : using logrotate command

@@ -1,0 +1,23 @@
+AWS Services for Devops
+
+1. aws being one of the top cloud provider, provides more than 200 services
+
+
+1. EC2: 
+2. VPC: required for security purposes
+3. EBS: 
+4. S3: 
+5. IAM: identity and access management
+6. cloud watch
+7. Lambda : serverless computing(difference between ec2 and lambda
+8. Cloud Build Servicer
+  a. aws code pipeline
+  b. aws code build
+  c. aws code deploy
+9. AWS Configuration
+10. Billing and Costing
+11. AWS KMS
+12. Cloud Trail
+13. AWS EKS
+14. ECS
+15. ELK

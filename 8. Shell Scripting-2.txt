@@ -1,0 +1,150 @@
+1. touch nodehealth.sh
+2. vi nodehealth.sh
+3. press esc+i, to get into insert mode
+4. start a file with the command added #!/bin/bash
+5. it is always important to mention the files details like author, version, descroption about teh file in comments
+
+#!/bin/bash
+#########################
+#Author:suma
+#date:01/12/2024
+#this script oitputs the node health
+#version:1
+#############################
+
+#to know the disk space etails of the machine
+df -h
+
+#to know free mempry details of the machine
+free -g
+
+#to know number of cpu's of the macgine
+nproc
+
+6. chmod 777 nodehealth.sh
+7. ./nodehealth.sh
+8. we wont be able to undestand the output that we get from the abpve command because of the way we have written the shell script
+so to improve
+9. 
+#!/bin/bash
+#########################
+#Author:suma
+#date:01/12/2024
+#this script oitputs the node health
+#version:1
+#############################
+
+#to know the disk space etails of the machine
+echo "print the disk space"
+df -h
+
+#to know free mempry details of the machine
+echo "print the memory"
+free -g
+
+#to know number of cpu's of the macgine
+echo "print the cpu"
+nproc
+
+10. better way than using echo command. is using the comand set -x to make commands execute in debug mpde
+
+#!/bin/bash
+#########################
+#Author:suma
+#date:01/12/2024
+#this script oitputs the node health
+#version:1
+#############################
+
+#setting the debug mode
+set -x
+
+#to know the disk space etails of the machine
+df -h
+
+#to know free mempry details of the machine
+free -g
+
+#to know number of cpu's of the macgine
+nproc
+
+11. what are processes and system processes?
+12. to know the processes that are running on the machine, ps -ef command is used
+13. to know all the processe running on the system ps -ef, to know only proccesses run by a particulasr agent
+  ps -ef | grep "agentName"
+14. to get only proces id's, there atre many commands but most commonly used one is awk, need tolearn awk.
+   ps -ef | grep "agetName" | awk -F " '{print $2}'
+  what the above awk command is doing
+  grep "text to search for" "source in which to search for text"
+15. interview question,what is the output of date | echo "date is"?
+ans : date comand snds ouptut to stdin, but pipe command receives ouptu only from the command that is previous to it
+16. back to our code, to list process id's of specific agent
+#!/bin/bash
+#########################
+#Author:suma
+#date:01/12/2024
+#this script oitputs the node health
+#version:1
+#############################
+
+set -x #debug mode
+set -e #exits the script when there is an error,  
+set -o pipe #drawback with set -e is it will not error out when there is an error with the pipe thats why set -o pipe, bevause it will check the last command of the pipe command
+# above three comands can be written as well set -exo pipe
+
+#to know the disk space etails of the machine
+df -h
+
+#to know free mempry details of the machine
+free -g
+
+#to know number of cpu's of the macgine
+nproc
+
+ps -ef | grep "agetName" | awk -F " '{print $2}'
+
+
+Devops use case -> how to search errors in log file
+1. logs files are usually very very large
+   but logs are usually stored in external storage space, in such case we use curl command
+  we have to prvide the abosolute url of the log file where it is stored
+  curl command is used to retrieve resource from the internet
+   wget -> similar to curl but wget wlll download the file where as curl will share the output
+Find command
+1. it will find the location of the input that we specify
+
+sudo means substitute user do
+su -> switch user
+
+sudo su - : means sudo gives previlateges to run on behalf of root user
+
+if else in shell scripting
+
+1. vi ifElse.sh
+2. press esc + i to enter into the insert mode
+#!/bin/bash
+a=10
+b=10 
+if [$a>$b]
+then 
+  echo "a is greater than b"
+else 
+  echo "b is greater than a"
+fi
+
+for loop in shell script
+
+#!/bin/bash
+
+for i in {1,100};
+  do echo $i;
+done
+
+
+trap command
+1. basically used for trapping signals
+  signals?
+  : there will be signaks passed to the linux, when executing the command like when we press ctrl+c where inernally stop signal is passed to the linux to stop the executing process
+    there are multiple signals available in linux
+   commonly used signals sigkill -> to kill the process, and some other
+  syntax: trap "echo dont use the ctrl+c" SIGINT
