@@ -1,0 +1,48 @@
+lets say we have a ec2 instance on which we have docker installed and we ran a container using docker
+docker has a container rintime to run container called docker strim
+
+if we movbe to kubernetes, kubernetes also should do something like this but since kubernetes is advanced concept
+what we will do with kubernetes, we will create a master and worker node architecture(lets say we have 1 worker and 1 master)
+in kubernets we dont directly send request to worker, but our request always goe sthrough something called control plane
+when user trier to dpeloy a deploy a pod(Smallest level of deployment in k8s, similar to container in docker
+but with advanced capabilities), there is a component in kubernetes called kublete, which is responsible for running the 
+pod(maintaining the pod) when pod is not running or it has any issues it informs the k8s. even if the pod has to run, kubernestes
+needs to have container run time. there are many options for container runtime
+kubernetes has standard container interface, if some container runtime can implent this interface than kubernetes will use
+that container runtime
+kubelet is responsible for ensuring that pod is always running, if the pod is not running that it will informa a component
+that simething is wring with the pod and than that component will take care of
+in docker there is a default networj called bridge network and in kubernetes also we have a something called cube proxy
+which is responsible for prviding network basically every pod that we are creating should have a ip allocated and also 
+it has to be provided with load balancing capabilities
+cube proxy provides networking, ip and default load balancing
+above discussed 3 components are tpart of worker node
+
+worked node or data plane has 3 components
+1. cube proxy: responsible for networking using ip tables
+2. kubelet -> ensures that pod is always running and if not it will take necessary actuons using k8s control plane
+3. container runtim: responsible for containing running
+worker node is basically responsible for running the application, using tehse 3 componnet we have technically everything to run the 
+application, why do we need master node or control plane?
+reason is for any enterprise level tools, there are some specific standards
+like cluster is one such specific standard. now if user has created a pod and then who will decide onw hich node thsi pod
+should be created 
+for such kind of instructions, there has to be a master node that will act as a core component
+that takes every request, and this core componegt is called api server and it is present in master node which is also called
+as control plane. api server is a component that basically exposes our k8s.
+if user is trying to create a pod, user tries to acess the api server, and from the api server k8s api server decides
+node 1 is free and to shedule a componnet on node1, we hve a comoponnet in node 1 called sheduler, it is resposnibile
+for sheduling the reources on kubernetes cluster
+now if we are trying to deploy a production level application on kubernetes , thanthere has to be a component in k8s
+that basically acts as a backup service or backup store for entire kubernetes cluster information
+in k8s there is a componnet called etcd which is a key value store and the entire k8s cluster information is stored as objects
+or key vakue pairs in etcd
+controller manager:  k8s supports auto scaling and k8s has a controllers like replica set that is maintaining the state of the pod
+controller mangers ensire such controllers are always running.
+cloud controller manager: kubernest can be run cloud platforms like eks
+ if there is a request for  -> did not understand
+
+k8s is divided into control plane(master nodes) and data plane(worker nodes)
+ data plane will have kubelet, kube proxy, container runtime
+control plane will have api server, sheduler, etcd, controller manager and cloud controller manager
+

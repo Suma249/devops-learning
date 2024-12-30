@@ -1,0 +1,22 @@
+1. we create containers using containerization platforms like docker by providing required details
+2. pod: wrapper around the pod where details requred are secified in yaml file. pod yaml manifest is nothing but a runnning soecificstion for a contsiner
+   but a pod can be single or group of containers
+3. deployment: pod is somehwere similar to conatiner i.e it provides yaml specification of conatiner and it does not have auto scaling and autohealing capabilities
+   and these capabilities can be achieved using deployment. if we deploy a deployment it will vreate a intermdedate resource called replica set and then replicate set createa
+   a pod, so k8s suggests dont create pod directly but suggets to do it via deployment
+   inside the deployment yaml manifest we can specify the replica count needed, deployment creates 2 pods, but reploca set as  controller
+  will ensure that there will always be specified number of replica count number of pods are running
+  controllers ensure desired state is aleways present in the k8s cluster and replica set is one such controller
+
+
+practicals
+1. we have kubectl and minilube installed
+2. minikube start -> to create a k8s cluster on single node
+3. kubectl get all -A -> lists all the resources in the k8s cluster
+4. from k8s documentation, get the format of deployment resource yaml file and modify it as per our application
+5. kubectl apply -f deployment.yml
+6. kubectl get deploy
+7. kubectl get pod
+8. controller will ensure that a specifi behaviour is created
+9. kubectl get pods -w -> watching for pods
+deploymen is the high lievel abstraction nd replica set is the one which ensures that specified number of replica count number of pods are always running

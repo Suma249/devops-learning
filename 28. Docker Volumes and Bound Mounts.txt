@@ -1,0 +1,39 @@
+lets say we have container with nginx application installed in it, what this nginx application dies is, it continously puts
+the user logged in informtion in the log file and this log file is very important
+if this container is gone down means than this log file will be deleted because containers are short lived
+container does not have a file system by nature they will use it from host system
+though container uses file system from host system they re not permnent once container goes down these resoirces wil be freed and will get kiled
+like this log file will be deleted and if this happens organization does not have the user login details of the application
+
+lets say there are 2 containers one for front end and another one is backend
+backend container keeps on writing a file and this file has to be read by the frontwnd container to display the 
+content
+now for some isues backend container has gone down, this data in the file will be lost as container does not have any persistent storage
+system. because of which even if container is up previous data will be lost
+
+assume there is a one applicatuon whoose purpose is to read a file that is provided from cron jon the host system
+but a container cannot access a specific file or folder on host system
+
+so to solve these problems, docker provides
+1. as a user we can use bind mounts
+2. volumes
+
+1. bind mounts: allows us to bind the directory from host system with the folder in the container -> in this wy even if the container
+    goes down, we can bind the container s details are avaialble on host system
+2. Volumes: similar to mounts but volumes has better lifecycle, using docker commands via docker cli we can create volumes
+  they are logical partition that we are creating on host system. we can create, destroy volumes and also we can attach volumes to containers
+with volumes we are not attaching any specific directory to containers but creating a logical partition on host system
+that can be attached to containers. with volumes we can create tem anyewhere like host or some ec2 instance and we can attch it to container
+
+to mount volume to a container -> docker -v <arguments> or docker --mount <arguments>
+
+practicals
+1. docker volume ls -> gives volumes on system
+2. creating a volume -> docker volume create "volume name" -> when we do this a logical file or folder that is created on that
+  specific host which we cannot see
+3. to understand a volume -> docker volume inspect "volume name"
+4. to remove volumes -> docker rm "volume name"
+5. attaching volume to a container -> create a volume, and then execute docker run -d --mount source="volume name to be mounted", target="target folder on the container" "imagename"
+6. docker ps -> lists the running containers
+7. docker inspect "container name"
+8. stop the continer and delete the volume to delete

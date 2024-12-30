@@ -1,0 +1,21 @@
+self hosted runners:
+if we are using jenkins, we can install jenkins and use another ec2 instance or docker container as runner
+runner: a place where job gets run, in jenkins it is called agent or worker node (application gets run)
+in github ction, these are classified into github hosted runners and self hosted runners
+github hosted runner: when we build a ci project on github system, what happens is ci system is built on github
+when we take a rinner from github, and execute out project on github runner itself
+self hosted runner: 
+in jenkins, to execute work uwe use worker nodes which can be ec2 instance or docker agent
+if our project is private and runners provided by guithub are not enough for our project
+
+
+practical
+1. create an ec2 instance
+2. configure inbound and outbound traffic rules for the created ec2 instance
+   click on the security group of that instance, select inbound rules than click on edit inbound rules, add 2 rules to accept raffic from http and https
+   save the changes and then go to outbound traffic rules
+3. clone the github-actiond-zer-to-hero repo and push it onto my repo
+4. under actions tab of my repo, under self hosted runner section aclick new runner and provide details of runner
+   aftr providing runner details, details will be given to execute on runner and do that
+5. update the actions file with  runs-on: self-hosted
+6. and with this if there are any commits out repo this action will run

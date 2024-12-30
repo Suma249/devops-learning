@@ -1,0 +1,43 @@
+in k8s the lowest level of deployment is pod, in k8s we cnnot deploy the container
+in k8s also we have containers but deplymemt is done as pod
+basically pod is described as a definintion of how to run a container
+in docker when we want to run a container we execute a command by providing required details
+in k8s we pass the same details in the pod.yaml. so k8s, we basically have a wrapper that abstarcts the user defined commands
+in pod.yaml.
+in k8s, insted of container we deloy a pod. a pod can be single container or it can be a multiple containers
+assume we are buiding a pod with single container, we will provide realted details in pod.yanl file
+we do so in k8s because k8s wants to bring declaritive capabilities.
+
+pod is nothing but a one or group of containers. most of the time it is single container and in some rare cases it is 
+group of containers, these are side car or init conatiners to support the actual conatiner
+ex: lets say we have our application in a container and this applications wants to read a confg file or read some user
+related file from another container, in such cases isntead of creating another pod, we will add them in the same pod
+if we put group of containers in the single pod, k8s will allow shared networking, shared storage
+so they can talk to each other
+inside pod there is a container. k8s allocates cluster ip address to the pod, and we can access the applications inside the 
+containers using the pod cluster ip address. ip addresses are generated f or pod and not for container
+pod is a wrapper around containers, kube proxy generates the clust er ip address
+
+kubectl: it is command line tool for k8s.
+local k8s clusters ex: minikube,  locak k8s cluster
+
+practical
+1. install kubectl and verify kubetctl version to see if it is installed
+2. install minikube - minikube is a cli tool that allows uto create k8s cluster
+3. execute minikube start -> to start k8s cluster. on windows and mac, minikube creates a VM and on top of it, it will create
+ a single node k8s cluster, it uses docker driver as a virtualization platform
+4. kubectl get nodes -> gives the minikube node as the output
+5. in k8s documenttion, search for the pod, copy the yam file. modify the details as per our application
+6. execute this pod to create the container -> kubectl create -f pod.yml
+7. kubectl get pods or kubectl get pods -o wide
+8. if the application is expose from contsiner to external wirld, we will login to the application and we execute curl
+command or somethig
+9. execute minikubr ssh, to login to the k8s cluster
+10. execute -> curl "ip address of the pod"
+pod.yml is the sprecification of container
+
+since k8s provides auto scaling and auto healing capabiities, how can we get it to our app
+on top of the pod we have a wrapper called deployment in k8s, we should use deployment to get auto healing and auto scaling capabilites
+in real life, we use deployment instead of pod. 
+11. kubectl logs pod "pod name"
+12. kubectl describe pod "pod name"

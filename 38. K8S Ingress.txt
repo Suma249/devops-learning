@@ -1,0 +1,33 @@
+why do we need ingress and what problem is it starting?
+1. load balancing that service provides is the simple type but not the enterprise level load balancing
+   problem: enterprise levl and tls load balancing is missing
+2. we can expose our application to external world using load balancer mode, problem is lets say we have many services and for each of of the service
+   if the type is load balancer, cloud provider was charging them more as the these ip addresses were public and static(service address is static and public)
+   problem: service type of load balancer -> cloud provider will charge for each of the service of type load balancer
+
+than k8s team to came up telling that it will allows k8s users to create a resource called ingress and the load balncers should something called
+ingress controller, so in k8s cluster we can create a ingress yaml file sauing u need psth based routing, and path based routing implementation'is 
+left to the load balancer and load balancer will create iingress controler and as k8s cluster user we will deploy the ingress controller using yaml
+or helm chart, ingress controller will watch for ingress resource and it will provide us the path based routing
+lets say we have k8s cluster and we are creating a pod using yaml manifest and as we know that there is a kubelet that will deploythe pod to 
+one of the worker node, kublet will also sit on the worker node, api server will notify the kubelt using sheduler and kubelt will dpeloy 
+the pod and similarly lets say we are creating a service yaml manifets, there is kube proxy and it will update the ip table rules
+so for every resource that we are creating in k8s there is a componeht that is watching for it and perfroming a rqeuired action
+similaly, even if we are creating a ingress in k8s there has to be resource or componnet or controller that has to watch for t
+so this was the proble, so k8s team said thst it can create ingress resource, and also said that it is technically impossible to
+implement the logic for all the load balancers availabke in the market, so it came up with the architectrure where user will create the ingress
+resource and load balancing companies has to write their own ingrsss controllers and they will place the ingress controllers on github 
+and they will provide the steps on how to install, 
+and as a user instead of just creating the ingress user we also has todeploy the ingress controller
+so ingress controller is a load balancer and sometimes it is a api gateway 
+
+practical
+1. continuing with the previous example setup
+2. create ingress resource and setup host based load balancing
+3. get the ingress resource example yaml from k8s official documentation
+   create the ignress yaml with the same code and modify it as per ur need
+   we need to provide the host name, path, service name and port details
+4. deploye it -> kubectl apply -f ingress.yml
+5. with this nothing will happen, for this to work we should install the ingress controllee
+   we can use nginx for trying, minikube addons enable nginx -> installs the nginx controller
+6. kubectl logs "controller name" -n "namespace"

@@ -1,0 +1,36 @@
+
+when we use physical server we wont use resources properly physical servee simple example is laptop
+so tp solve this problem we use the concept of hypervisor
+
+hypervisor uses a concept called as virtualization, virtualization is basically used to create lot of virtual machines on top of physical servers
+so virtual server is basically a logical seperation where we have operating system for each of the virtual machines
+and on top of these OS'es we will run our applications so instead of one application we will be running multiple applications and each
+of these applications are run on a VM which has its own operating system
+as each of these applications has their own operating system they are very secure, even though they are running on the same physical server they are 
+logically tighly eperated because of individual operating suystem
+
+why we shpuld move to containers?
+we have physicals erver and on top of that we have installed a hypervisor
+drawbacks of VM?
+
+containers will solve the problems that we have with virtual machines to some extent
+
+containers can be creatyed in 2 ways, 
+1. on to of VM
+2. on top of physical servers
+
+docker does not actually care how it is created
+
+docker containers do not have OS of their own but they will use the resources from the base system that they are running on 
+docker containers will have a minimal os or base image
+container is a package or bundle of our application, application dependencies and system dependencies for the application
+any other shared libraries wil be used from host system that they are running on
+
+containers are light weight and they use respurces from the host system that they are running on
+
+life cycle of docker container
+dockerfile -> image -> container
+
+docker engine
+docker is very much dependent on docker emgine and this docker engine is a single point of failure
+to avoid this single point of failure and other challenges with docker engine, we use buildar

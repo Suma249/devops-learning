@@ -1,0 +1,17 @@
+k8s is a opensource container orchestration engine or solution
+eks, openshift, tanzu, racher, etc., are distributions of k8s
+
+we can directly use k8s, openshift, rancher, tanzu, eks aks, gke, etc.,
+
+difference between minikube and kubernetes
+
+difference between eks and kubernetes
+
+how devops engineers manages the hundreds of clusters on production
+one of the most widely used tool is KOPS other toold include kubeadm(invovles lot of manual intervention)
+KOPS: k8s operations.kops manages the lifecycle of k8s like installing, managing(upgrading)
+
+k8s installation using KOPS
+1. dependencue srequired: python3, aws clu and kubectl
+
+notes -> iam-veeramalla/kubernetes-zero-to-hero git repo

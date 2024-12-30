@@ -1,0 +1,47 @@
+why continers are light weight? iam-veeramalla/docker-zero-to-her -> github repo
+container itself can have minimum system dependencies. containers should have a logical seperation this can be done 
+using system dependencies.
+
+
+files and folders inside containers
+/bin: contsins containers binary execution files
+/sbin: has system library execution files
+/etc: contains configuration files for varuous system services
+/lib: contains library files
+/var: has log files
+/usr: contains user related data
+/root: home directory for root user
+these basic folders form logical seperation from on container to another container i.e a container cannot share these files and 
+folders with other containers, if it is than we are compromising security of the containers
+these files and folders are nor used from kernel and they are basically prt of container imsge
+files and folders that are used from kernel(os) for container: hosts file system, networking stack, namespace and control groups
+
+wht is docker?
+docker is a containerization platform that implements the concept of containers
+
+architecture of docker
+using docker client we can execute docker commands and these coimmands are received by docker daremon which is a process
+and these command are cexecuted and when they are executed  image and containers are created. docker daemon is heart of docker
+
+docker lifecycle
+we as a developer have to write a docker file(a set of instructions) -> using docker build command we give this docker file to
+docker daemon, which creates a docker image -> this docker image when executed using run command gives containers
+
+docker terminology
+docker daemon: a service, that listens to docker requests when user gives using docker cli
+docker desktop: 
+docker registry: docker hub is one such public docker registry, docker hub is the version control system for docker images
+difference between github and docker hub
+dockerfile:
+image:
+docker desktop: 
+
+practcal 
+1. create a ec2 instance
+2. update the packages
+3. install the docker - sudo apt install docker.io -y
+4. sudo systemctl status docker -> verify is docke is running
+5. clone the github repo for code that needs to be dockerised
+6. create a docker file for code in app.py
+7. build the created docker file to create a docker image
+8. run the created image

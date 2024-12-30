@@ -1,0 +1,29 @@
+lets a our task is to execute  acalculator application as a container
+docker file steps for application involves
+ base image
+ workdir
+ installing dependencies
+this is basic way, but this is not  good way. problem is that, we require only python run time to run this caculator function
+but we have other things also like base image which itself will comes with lot of other dependencies
+but for running the above python application, we dont need anything othe rtahn python runtime environmnet
+base image and other thibgs are needed to build the application not for running the application and for running the application
+we only need python runtime environment
+to solve this problem, docker introduced somehing called multistage builds, as part of which we split our docker file
+into 2 parts and it can be multiplie parts as well
+in the first part we will add
+ from ubuntu
+ run
+and we will take a binary from first part into second part, by this we are taking a minimal image(binary)
+so for this we have two from statements and second from statement will have a runtime base image in our exanple
+python runtime base image
+
+ex:lets say we have an application that has frontend(react), backend(java) and db(mysql)
+
+multistage build can have as many stages as we want but only the last stage is considered which is a minimalistic image
+
+Distroless image: very minimalistic image that will only have runtime environment for the application
+and for some application these distrolss images wont even have runtime environment ex: golang application
+these images have advantage of security
+
+practical
+code src: iam-veeramalla/docker-zero-to-hero

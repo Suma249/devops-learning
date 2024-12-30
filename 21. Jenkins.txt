@@ -5,5 +5,39 @@
 5. verify jva installation -> java --version
 6. install jenkins -> sudo apt-get install jenkins, jenkins document : https://www.jenkins.io/doc/book/installing/linux/
 7. configure security group of ec2 instance toa ccept traffic from jenkins whuich is by default not accepting traffic
+  sudo systemctl restart jenkins   sudo reboot   sudo reboot
 8. jenkins architecture
-   in an organizatuon
+   in an organization, there will be a jenkins master where jenkins is installed and this is used only for sheduling purpose
+   as all the things cant be run on single jenkins master and there will be worker nodes based on teams, applications and os'es
+   problem with this architecture is,ex: if there are 10 worker nodes, and there is one worker node where whenver there are requests
+  for windows system it should go to worker node 3, and currently there are no requests for windows os and because of which 
+  node 3 is sitting idle and resource is wasted.
+  to solve this problem we use docker agent instead of virtual machines
+9. install docker - sudo apt install dcker.io on the same machine in which jenkins is installed we can have it on other instancr
+   as well but then that instance should be configured as slave
+10. docker runs on daemon process, which is a single process or single source of truth for docker
+     and by default this daemn process is not accessible to other users
+    so we can grant access to other user sof we want jenkins by default come siwth jenkins users
+    switch to root user -> sudo su -
+    usermod -aG docker jenkins -> granting access to daemon process for user jenkins
+   docker installation create a group called docker, who ever wants access to docker daemon they should be part of this group
+    restart docker
+   switch  to user to jenkins -> su - jenkins
+   run hello-world docker image -> docker run hello-world
+  restart the jenkins
+11. install the docker pipeline plugin inside the jenkins, to run docker as agent
+    jenkins dashboard -> manage jenkins -> avalable plugins -> search for the plugin (docker pipeline)
+12. always use pipeline method to build the pipleline
+13. new item -> select pipeline method, give a name -> select pipeline from scm in pipeline section, (picking up a script from
+ source code managrment) -> provide the github url of the script file -> provide branch and script file folder details -> save
+  -> click build now -> once the build is success -> jenkins will delete the created docker containers
+   i.e only when there is a request, container will be created and defined pipeline code will be execurted and after that
+     created container will be deleted (agent is container here so once the build is success, created agent conatiner will 
+     be deleted)
+14. we trie donly for one sttage, if we want it for multiple , we have to add the statges
+
+multi stage multi agent
+lets say we have an application with database, front end and backend which is a 3 tier application
+now, db related ci cd shoudl be executed on vm of type cent os and frint end and bacjend sgould be on vm of type ubuntu
+for these kind of scenarios approach is create multiple agents
+code reference -> iam-veeramalla/jenkins-zer-to-hero github repo

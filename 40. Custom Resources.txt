@@ -1,0 +1,48 @@
+in k8s cluster there are some resources that comes by defaultlike service, deployment, pod, etc.,
+
+if we want to introduce new resource to the k8s or extending the api like k8s does not support advanced security problems, in such cases we can use
+ crd, cr and custom controller
+there re 2 actors here devops enginer and user
+1. deploying the custome resoutrce definition and controller is the action od devopds engineer
+2. deploying the custom resource can be ction of user or devops engineer
+
+like we can use argicd to add gitops to k8s, or keyloack for user managment and many other resources that adds the functionality to k8s that does
+not exist in it
+k8s team told that there are only few reoirces that they support by default and if we wnat additional capabilities in k8s
+they will allow us to extend the api of k8s or extend te capabilities of k8s
+
+to extend the capabilities of k8s, there are 3 resources
+1. crd
+2. cr
+3. custom controller
+
+ custom resource definition i.e we(people who are addong the functionality to k8s) are defining the new type of API to k8s, for thatthey have to 
+submit the custom resource definition to k8s. it is a yaml file with details of what user has to specify for this resource.
+ crd is a yaml file that is used to introduce new type of API to k8s and that will have all the foelds that user can define in custom resource
+ ex: as a user we are creating a deployment.yml file and in that we will specify the required details for deployment and 
+ k8s has the resource definition in the API server or k8s controller manager that will validate if the user creatied deployment resource is correct or not
+ user has submitted a custom resource that is validated again custom resource definition and custom resource is created inside our k8s cluster
+ deployment controller wil create replica and replica set controller will create a pod and all this is done by k8s controller abd similarly
+ there has to be a custom controller that is deployed in k8s cluster, so that once we deploy a custom resource, this custom controller will 
+ watch for it and takes the required action
+
+ex: devps engineers have deployed a virtual service crd in k8s cluster and dev or user will create the virtual service custom resource
+thst is validated and deployed in k8s cluster
+but as disvussed in ingress part, nothing will happen as there is no controller, as in this case there is no one watching the custom resource
+so for this devops has to deploy the custom controller as per the given instructions in the official documentation of that service providers
+
+for any custom resources
+1. deploy the crd to extend the capabilities of  k8s cluster
+2. deploy the custom controller
+3. deploy the custom resource
+similarly'by dfault inside the l8s cluster we have resource definition for deployment and we dont have deploy the crd for it
+as a user we can create the deployment resource in out k8s cluster that is validated again the resource definition of deployment in k8s
+and we dont have todeploy a controller for it as it is a native sresources k8s already has a controller for it by default
+
+
+how one can write a custom controller?
+ using golang and k8s is also created using golang
+there is a component called client go in the k8s cluster and we will interact with client go and entire process depends on setting the watchers
+by default k8s will watch for set of watchers like deploymen watchm service watcher and whenver thee is any update, creation these watchers will take action for
+that specific resource
+

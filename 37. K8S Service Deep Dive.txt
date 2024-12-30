@@ -1,0 +1,29 @@
+1. kubeshark is a tool that helps us in understanding how traffic is flowing the k8s cluster and how pods are communicating and how servuce is doing load balancing
+2. we have images created in docker-zer-to-hero git repo of iam-veeramalla
+3. start k8s cluster - minikube start
+4. from docker-zero-to-hero folder go to examples/python-web-app folder, where we have dockerfile, and the application is devops which is a django application
+5. create a image for this applicstion, docker build -t suma/python-sample-web-app-demo:v1 .
+6. we have image crearted
+7. get the deployment example yam file from k8s documentation, create a deployment.yml file paste the copied example deployment file from k8s documentation
+   in our python-web-app folder and modify the ddeployment fole as per our application, 
+   name: sample-ptthon-app , labels:sample-python-app, replics: 2, selector: sample-python-app, inside pod template app: sample-python-app
+   in the container sections, name: python-app and image: suma/python-sample-web-app-demo:v1 and port: 8000 -(port is mentioned in the dockerfile as well)
+8. create a deployment : kubectl apply -f deployment.yml
+9. kubectl get deploy, kubectl get pods
+10. kubectl get pods -o wide -> to get the ip address and other details about the pods
+11. kubectl get pods -v=7 -> to get more information about the pods.  v can hae max of 9, verbox level=v
+12. to access the application, we hve to enter into the cluser using - minikube ssh, we will enter into cluster and then use curl http://ip-address-of-the-pod:port
+13. create a service yaml file, get a example service yaml code from k8s cluster of type nodeport
+    change name of service as per our need, give the selector name as the one that was used for label for the pod
+    for nodeport give any value, target port is the one where application is running
+14. kubectl apply -f sevice.yml, service will be created
+15. to debug what happened when the above command is executed kubectl get svc -v=9 -> will get the entire logs
+16. for service type node port, port mapping will be done, whuch meand we can access the application using service cluster ip
+17. since we have node port service, now we can access the application using node's ip address at the node port
+    without entering the cluster itself  -> curl -l "location"
+   we cann access it in browser as well
+18. service discovery -> kubectl edit svc "service name" -> modify the selector to some random value than the label that was given in the pod
+   this time if we try accessing the apping using nodeport , we wont be able to 
+19. load balancing:we have two podes of the application and we sent rewquest to application 6 times and if we analyze the logs for this flow in the kubeshark
+    
+20. install kubeshark  -> and execute kubeshark tab -A

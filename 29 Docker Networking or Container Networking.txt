@@ -1,0 +1,41 @@
+networking allows containers to communicate with each other and the host system
+
+for a container -> there is host and on top of it we have a docker on which there will be containers
+there cane be scenario's where
+1. conatiners needs to communicate with each other: front end conatiner needs to communicate to backend -> so here we need a networking
+2. containers should be completely isolated from each other
+container networking offers both the solutions
+
+1. container 1 talks to container 2
+2. container 1 has isolation from container 2
+
+how does a container talks to host: host will have default network called eathernet zero and even container will also have the same
+these two networks are different , and if we try to ping container from host we will get a network error
+and to solve this, docker creates a virtual eithernet whenver we create a container. so there is a virtual ethernet
+which basicallt is docker zero and without which host cannot talk to container
+and this is called as bridge networking -> which is a default networking(host has different subnet and container had=s different subnet
+to make these two communicate docker creates a default network )
+
+Host Networking
+containers directly use the network of host, in this case what docker does is whenver we are creating a container 
+docker will directly bind the cotainer with the ip address of host not ip address but ethernet zero of host
+
+overlay networking: creates a network that is common across the host
+
+
+there is a host and on top of this if we run a container each has different ethernet and docker has created a virtual ethernet to
+provide communication between container and host
+and if we create another container on the same host it will also use the same virtual ethernet to talk to host
+as there is only one virtual ethernet -> scenario 1
+
+to isolate containers -> docker allows us to create our own custom bridge networks, by defult docker uses the same virtual bridge network
+but docker allows us to create custom bridge networks which can be used to communicate between containers and host
+
+practical
+1. run the same 2 times to generate 2 different containers
+2. inspect these 2 containers and find the ip address
+3. to login to the container  -> ping "container ip address"
+4. docker network ls
+5. docker network create "network-name" -> custom bridge network will be created
+6. docker run -d --name "container name" --network="network name" "image name" -> create a container
+7. 

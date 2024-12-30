@@ -1,0 +1,30 @@
+rbac is braodly divided into 2 parts
+1. users 
+2. services accounts
+
+lets say we are using k8s cluster in minikuber or kind or any k8s platform
+by default we get administrative access to it. 
+but when we try to use k8s in organization, very first thing that we do as devops engineer is to define access 
+it can be done using role based access 
+dependeing upon the rolw we will define the access
+
+service accounts
+lets say a pod is created and wha access shoukd this pod in k8s cluster
+
+responsibilties of rbac are
+1, managing the user access
+2. manageing the access of the services that are running in the k8s cluster
+
+on a broad kevel, in k8s we have 3 msjor things fir managug the rbac
+1. service accounts/users
+2. k8s roles/cluster roles
+3. role binding/cluster binding
+
+how do we create users in k8s clusters?
+1. k8s does not deal with user management but it offloads user management to identity providers
+  in k8s there is a component called api server and to this we can pass certain flags. 
+  in k8s, api server acts as a oauth server, so we can affload user management to identity providers, ex: IAM on aws but in between we have to create 
+  something called iam provider
+
+service accounts
+is just like creating pod

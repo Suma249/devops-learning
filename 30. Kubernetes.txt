@@ -1,0 +1,40 @@
+difference between docker and kubernetes
+docker: plaform to build containers
+kubernestes: container orchestration platform.
+
+containers are ephimeral in nature i.e containers are short lived i.e die and revive anytime
+lets say we have containers running on our host system and if one container is lack of memory resources than container will
+die
+we have a host and on top of which we have a docker installed and we have creayed few containers but because on container is taking
+too myuch memory other container got killed by kernel -> single host problem, nature of container platform is scoped to single 
+platform
+
+lets someone has killed one of our container, and because of which application inside the container is not accessible
+unless som one acts upon the container, it wont start -> so lack of auto healing
+if 1000 containers has gone down we cant mannually start each and every container -> lack of auto healing problem
+
+lets say we have created a container inside which application is running and due to sme reasons, on some day
+more people compared to other day will access the application i.e load gets increases on the application
+so in this case we can mannually increase the containers count or it has to happen automatically
+and docker does not support both these things -> lack of auto scaling
+
+1. single host problem
+2. lack of auto healing
+3. lack of auto scaling
+4. docker is a very minimalistic or simple platform i.e by default docker does not provide support for enterprise application
+(enterprise application includes load balancer, firewall, gateway, etc.,)
+
+kubernetes solves the above problems with docker, but how?
+1. by default kubernes is a cluster(group of nodes). when we installed docker we installed it on one host
+ but kubernestes is installed on master slave architecture. we can install it on one node also for develoment
+ so now, lets assume kubernestes is installed on one master and one slave architecture than if one container is impactinge
+the other container, immediately kubernestes puts the impacted container in other node
+2. kubernetes has something called replica set or replication controller, in replicsation set yaml file, 
+   modify it to increwse the container count
+   kubernetes also supports something called horizontal pod auto scalled using which we can tell kubernetes to scale the containes
+   based on some threshold
+3. whenver there is a damage with the container, kubernetes will try to control it
+   lets say for some reason, one of our container is going down, using auto healing feature kubernetes starts the container
+   even before the current conatiner goes down, kubernetes has something called api server through which kubernetes will come
+   to know about containers status
+4. people at google built a enerprise level orchestration platform

@@ -1,0 +1,35 @@
+for each deployment we will create a service most of the time
+
+lets say hve a requirement of creating  3 replica's, so we have 3 pods and for some reason one pod is gone down, in such cases replica set will create a pod 
+previously it has some ip address and this time when new one came up it hs a new ip addresses, now since ip address has been changed the team working on the project or
+application which is in this pod which hs issues and new one was created by replica set, they will tell application is not working
+as a devops engineer adter debugging we wil find what has happened
+but this is not correct approach to use a application ip address.
+so what we can do is, on top of the deployment we will create something called service, so in this case instead of asking the application in pod with ip address
+they can ccess the service. and this service acts as a load balancer by using a kube proxy component, so with this problem is solved.
+this service using kube proxy will handle the incoming load to the application
+
+1. load balancing is the advatage of service, 
+2. service discovery -> but when new pod comes up ad its ip address will change, how service will handle that?
+   service is keeping track of deployment and one of the pods ip address is changed how service will handle that?
+, service uses the concept of labels and selectors, what these labels and selectors dies is for every pod thats created devs or devops will apply a 
+  label that will be common for all the pods. service will watch for the pods with the specified label as label for application will remain the same
+  as replica set will deploy the pod with the same yaml file. if service is keeping track of pods using labeks insted of ip address 
+  the probkem is solved .
+  we create deployment with details mentioned in yaml file and this yaml manifest will also contails labels, and this deployment when executed will create replica set
+  and this replica set will create specified replica count number of pods
+3. Expose to World: whe a pod is deployed, to access the application on the pod's ip address  we have to login to the k8s cluster
+   but in real world we cannot do so, but service can expose our application and by exposing service allows application to be accessed outside the k8s cluster
+   when we are creating a k8s service, in the yam we can create service of 3 types
+   1. cluster IP 2. nodeport 3. lad balancing default types
+  if wecreate a service using cluster IP our application will still hae the same behaviour but ut gives discovery and load balancing
+  if we create a service of type node port, it allows application to be accessed in our organization if they have access to worker node's ip addresses
+  servce of type load balancing, will expose the application to outside world, we will get elastic load balancer ip address and using that outside wotld can access the application
+  
+lets there is a k8s cluster and we have created a deployment that will create a replica set which envetually creates pod
+ and we will create a servuce on top of deployment. now user flow depedending on service type
+ 1. service type of cluster ip: application will be accessed to those who have access to k8s cluster, if user who does not hve access to cluster will not have access to 
+    aplication
+ 2. service type of load balancer: service tjat got created will ask eks(if k8s cluster is on aws) for elb ip address 
+     there is a compnent in k8s called cloud contrl manager, this will generate a public ip address and will give it to service
+ 3. service of type node port: peiple who has access to worker nodes will have access to application
